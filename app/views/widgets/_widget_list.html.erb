@@ -1,0 +1,27 @@
+<% if widgets.blank? %>
+  <tr>
+    <td>No data found!!!</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+<% else %>
+  <% widgets.each do |widget| %>
+    <% user = widget['user'] %>
+    <tr>
+      <td>
+        <%= widget['id'] %>
+      </td>
+      <td>
+        <%= widget['name']&.titleize %>
+      </td>
+      <td>
+        <%= widget['description'] %>
+      </td>
+      <td>
+        <%= image_tag(user['images']['small_url'], width: '26') %>
+        <%= link_to user['name']&.titleize, '#' %>
+      </td>
+    </tr>
+  <% end %>
+<% end %>

@@ -9,7 +9,12 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="row">
+    <div class="d-block">
+      <%= render partial: 'layouts/navbar' %>
+    </div>
+    <div class="container d-block mt-5 pt-2">
+      <%= yield %>
+    </div>
   </body>
 </html>

@@ -1,0 +1,18 @@
+<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark" id="mainNavIn">
+  <div class="container">
+    <a class="navbar-brand js-scroll-trigger text-uppercase" data-toggle="tooltip" href="<%= root_path %>" name="Go To Home">Widgets enlists</a>
+    <button aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler navbar-toggler-right" data-target="#navbarResponsive" data-toggle="collapse" type="button">
+      <i class="fa fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav text-uppercase ml-auto">
+        <li class="nav-item">
+          <%= link_to "Home", root_path, class: "nav-link" %>
+        </li>
+        <!--<li class="nav-item">-->
+          <%#= link_to "Signup", '#', class: "nav-link", data: {toggle: "modal", target: "#new_registration"} %>
+        <!--</li>-->
+      </ul>
+    </div>
+  </div>
+</nav>

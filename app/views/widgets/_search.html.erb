@@ -1,0 +1,6 @@
+<%= form_with(url: widgets_path, method: "get", class: "form-inline") do |f| %>
+  <div class="form-group ml-5 mb-4">
+    <%= text_field_tag 'term', '', class: "form-control", placeholder: "Enter the search term..." %>
+    <%= submit_tag "Search", class: 'ml-3 btn btn-primary' %>
+  </div>
+<% end %>
