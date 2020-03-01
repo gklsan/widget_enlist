@@ -1,0 +1,19 @@
+<h1>Edit <b><%= @widget[:name] %></b></h1>
+<%= form_with(url: widget_path(id: @widget[:id]), method: 'put') do |f| %>
+  <div class='form-group'>
+    <label>Name</label>
+    <%= text_field_tag 'widget[name]', @widget[:name], class: 'form-control', placeholder: 'Name', required: true %>
+  </div>
+  <div class='form-group'>
+    <label>Description</label>
+    <%= text_area_tag 'widget[description]', @widget[:description], class: 'form-control', placeholder: 'Description', required: true %>
+  </div>
+  <div class='form-group'>
+    <label>Kind</label>
+    <%= select_tag 'widget[kind]',
+                   options_for_select([ 'hidden', 'visible' ], @widget[:kind]),
+                   class: 'form-control' %>
+  </div>
+  <%= submit_tag 'Save', class: 'btn btn-primary' %>
+  <%= link_to 'Cancel', root_path(me: true), class: 'btn btn-secondary' %>
+<% end %>

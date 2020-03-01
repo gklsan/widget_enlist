@@ -18,10 +18,18 @@
       <td>
         <%= widget['description'] %>
       </td>
-      <td>
-        <%= image_tag(user['images']['small_url'], width: '26') %>
-        <%= link_to user['name']&.titleize, user_path(user['id']) %>
-      </td>
+      <% if local_assigns[:my_widgets] %>
+        <td><%= widget['kind'] %></td>
+        <td class="d-flex">
+          <%= link_to 'Edit', edit_widget_path(widget['id'], widget:  widget), class: 'btn btn-primary' %>
+          <%= link_to 'Remove', widget_path(widget['id']), method: :delete, data: { confirm: 'Are you sure?' }, class: 'ml-2 btn btn-secondary' %>
+        </td>
+      <% elsif !local_assigns[:user_view] %>
+        <td>
+          <%= image_tag(user['images']['small_url'], width: '26') %>
+          <%= link_to user['name']&.titleize, user_path(user['id']) %>
+        </td>
+      <% end %>
     </tr>
   <% end %>
 <% end %>

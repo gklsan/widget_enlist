@@ -1,7 +1,10 @@
-<div class="d-flex row">
-  <h1 class="text-uppercase col-md-6">Widgets</h1>
-  <div class="col-md-4">
+<div class="d-flex">
+  <h1 class="mr-auto text-uppercase">Widgets</h1>
+  <div>
     <%= render partial: 'search' %>
+  </div>
+  <div>
+    <%= link_to 'New widget', new_widget_path, class: 'ml-2 btn btn-secondary' %>
   </div>
 </div>
 <table class="table table-striped">
@@ -10,11 +13,16 @@
     <th scope="col">#</th>
     <th scope="col">Name</th>
     <th scope="col">Description</th>
-    <th scope="col">User</th>
+    <% if @my_widgets %>
+      <th scope="col">Kind</th>
+      <th scope="col">Action</th>
+    <% else %>
+      <th scope="col">User</th>
+    <% end %>
   </tr>
   </thead>
   <tbody class="js-widget-list">
-    <%= render partial: 'widget_list', locals: { widgets: @widgets } %>
+    <%= render partial: 'widget_list', locals: { widgets: @widgets, user_view: false, my_widgets: @my_widgets } %>
   </tbody>
 </table>
 

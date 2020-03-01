@@ -1,7 +1,7 @@
 <div class="row">
   <h1 class="text-center col-md-12">
     <img src="<%= @user['images']['small_url']%>" width="36px">
-    <%= @user['name']&.titleize %>(<%= @user['id'] %>)
+    <%= @user['name']&.titleize %>
   </h1>
 </div>
 <table class="table table-striped">
@@ -10,11 +10,10 @@
     <th scope="col">#</th>
     <th scope="col">Name</th>
     <th scope="col">Description</th>
-    <th scope="col">User</th>
   </tr>
   </thead>
   <tbody class="js-widget-list">
-    <%= render partial: 'widgets/widget_list', locals: { widgets: @widgets } %>
+    <%= render partial: 'widgets/widget_list', locals: { widgets: @widgets, user_view: true } %>
   </tbody>
 </table>
 

@@ -1,1 +1,1 @@
-$('.js-widget-list').html("<%= escape_javascript(render 'widgets/widget_list', widgets: @widgets, layout: false) %>");
+$('.js-widget-list').html("<%= escape_javascript(render 'widgets/widget_list', widgets: @widgets, my_widgets: @my_widgets, layout: false) %>");

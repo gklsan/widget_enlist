@@ -2,8 +2,23 @@ module Widget
   private
 
   def public_widgets
-    response = RestClient.get "#{url}/visible", params: client_id_and_secret.merge(term)
+    response = RestClient.get "#{widget_url}/visible", params: client_id_and_secret.merge(term)
     response.code == 200 ? JSON.parse(response).dig('data', 'widgets') : []
+  end
+
+  def update_widget
+    response = RestClient.put "#{widget_url}/#{params[:id]}",
+                              { widget: widget_params.to_h },
+                              auth_header
+    response.code == 200 ? JSON.parse(response).dig('data', 'widget') : []
+  end
+
+  def create_widget
+    RestClient.post widget_url, { widget: widget_params.to_h }, auth_header
+  end
+
+  def remove_widget
+    RestClient.delete "#{widget_url}/#{params[:id]}", auth_header
   end
 
   def term
@@ -12,7 +27,7 @@ module Widget
     { term: params[:term].to_s }
   end
 
-  def url
+  def widget_url
     "#{ENV['BASE_URL']}/api/v1/widgets"
   end
 
