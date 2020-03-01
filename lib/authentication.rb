@@ -15,7 +15,18 @@ module Authentication
     JSON.parse(response).dig('data')
   end
 
-  def auth_url
+  def reset_user_password
+    response = RestClient.post "#{user_url}/reset_password", client_id_and_secret.merge(user: user_params.to_h.slice('email'))
+    response.code == 200 ? JSON.parse(response).dig('message') : nil
+  end
+
+  def change_user_password
+    response = RestClient.post "#{user_url}/me/password", { user: user_params.to_h.slice('current_password', 'new_password')}, auth_header
+    token = response.code == 200 ? JSON.parse(response).dig('data', 'token') : nil
+    session[:access_token] = token['access_token'] if token
+  end
+
+  def auth_url  
     "#{ENV['BASE_URL']}/oauth"
   end
 

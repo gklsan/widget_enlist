@@ -23,6 +23,12 @@
           <li class="nav-item">
             <%= link_to "Logout", logout_path, method: :post, class: "nav-link" %>
           </li>
+          <li class="nav-item">
+            <%= link_to "Reset password", '#', class: "nav-link", data: {toggle: "modal", target: "#reset_password"} %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Change password", '#', class: "nav-link", data: {toggle: "modal", target: "#change_password"} %>
+          </li>
         <% end %>
       </ul>
     </div>
