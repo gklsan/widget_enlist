@@ -3,9 +3,11 @@
   <div>
     <%= render partial: 'search' %>
   </div>
-  <div>
-    <%= link_to 'New widget', new_widget_path, class: 'ml-2 btn btn-secondary' %>
-  </div>
+  <% if session[:access_token] %>
+    <div>
+      <%= link_to 'New widget', new_widget_path, class: 'ml-2 btn btn-secondary' %>
+    </div>
+  <% end %>
 </div>
 <table class="table table-striped">
   <thead class="thead-dark">

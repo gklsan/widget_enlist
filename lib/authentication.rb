@@ -26,7 +26,7 @@ module Authentication
     session[:access_token] = token['access_token'] if token
   end
 
-  def auth_url  
+  def auth_url
     "#{ENV['BASE_URL']}/oauth"
   end
 

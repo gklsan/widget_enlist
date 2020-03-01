@@ -3,6 +3,8 @@ class WidgetsController < ApplicationController
   include Authentication
   include Widget
 
+  before_action :authenticate_user, only: %i[create update edit destroy new]
+
   def index
     @widgets = if params[:me].to_s == 'true'
                  @my_widgets = true
@@ -11,6 +13,8 @@ class WidgetsController < ApplicationController
                  public_widgets
                end
   end
+
+  def new; end
 
   def create
     create_widget
