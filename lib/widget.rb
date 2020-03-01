@@ -13,7 +13,7 @@ module Widget
   end
 
   def url
-    "#{ENV['BASE_URL']}/widgets"
+    "#{ENV['BASE_URL']}/api/v1/widgets"
   end
 
   def client_id_and_secret

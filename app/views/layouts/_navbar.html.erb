@@ -9,10 +9,20 @@
         <li class="nav-item">
           <%= link_to "Home", root_path, class: "nav-link" %>
         </li>
-        <!--<li class="nav-item">-->
-          <%#= link_to "Signup", '#', class: "nav-link", data: {toggle: "modal", target: "#new_registration"} %>
-        <!--</li>-->
+        <% if session[:access_token].nil? %>
+          <li class="nav-item">
+            <%= link_to "Signup", '#', class: "nav-link", data: {toggle: "modal", target: "#new_registration"} %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Login", '#', class: "nav-link", data: {toggle: "modal", target: "#login"} %>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to "Logout", logout_path, method: :post, class: "nav-link" %>
+          </li>
+        <% end %>
       </ul>
     </div>
   </div>
 </nav>
+<%= render partial: 'users/new' %>

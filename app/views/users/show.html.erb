@@ -1,8 +1,8 @@
-<div class="d-flex row">
-  <h1 class="text-uppercase col-md-6">Widgets</h1>
-  <div class="col-md-4">
-    <%= render partial: 'search' %>
-  </div>
+<div class="row">
+  <h1 class="text-center col-md-12">
+    <img src="<%= @user['images']['small_url']%>" width="36px">
+    <%= @user['name']&.titleize %>(<%= @user['id'] %>)
+  </h1>
 </div>
 <table class="table table-striped">
   <thead class="thead-dark">
@@ -14,7 +14,7 @@
   </tr>
   </thead>
   <tbody class="js-widget-list">
-    <%= render partial: 'widget_list', locals: { widgets: @widgets } %>
+    <%= render partial: 'widgets/widget_list', locals: { widgets: @widgets } %>
   </tbody>
 </table>
 

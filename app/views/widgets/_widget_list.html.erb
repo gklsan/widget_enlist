@@ -20,7 +20,7 @@
       </td>
       <td>
         <%= image_tag(user['images']['small_url'], width: '26') %>
-        <%= link_to user['name']&.titleize, '#' %>
+        <%= link_to user['name']&.titleize, user_path(user['id']) %>
       </td>
     </tr>
   <% end %>
